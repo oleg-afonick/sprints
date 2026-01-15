@@ -100,4 +100,40 @@ class PerevalTest(APITestCase):
         self.assertEqual(response.data, serializer_data)
         self.assertEqual(response.data.get('beauty_title'), serializer_data.get('beauty_title'))
 
+    def test_create(self):
+        url = reverse('pereval-list')
+        data = {
+            "beauty_title": "перевал 3",
+            "title": "Пхия",
+            "other_titles": "Триев",
+            "connect": "",
+
+            "add_time": "2021-09-22 13:18:13",
+            "user": {
+                "email": "qwerty@mail.ru",
+                "fam": "Пупкин",
+                "name": "Василий",
+                "otc": "Иванович",
+                "phone": "+7 555 55 55"},
+
+            "coords": {
+                "latitude": 45.3842,
+                "longitude": 7.1525,
+                "height": 1200},
+
+            "level": {"winter": "",
+                      "summer": "1А",
+                      "autumn": "1А",
+                      "spring": ""},
+
+            "images": [
+                {"data": "картинка1", "title": "Седловина"},
+                {"data": "картинка2", "title": "Подъём"}
+            ]
+        }
+        json_data = json.dumps(data)
+        response = self.client.post(url, json_data, content_type='application/json')
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(3, Pereval.objects.all().count())
+
 
