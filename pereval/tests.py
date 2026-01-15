@@ -136,4 +136,13 @@ class PerevalTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(3, Pereval.objects.all().count())
 
-
+    def test_update(self):
+        url = reverse('pereval-detail', kwargs={'pk': self.pereval_2.pk})
+        data = {
+            "beauty_title": "beauty_title_222"
+        }
+        json_data = json.dumps(data)
+        response = self.client.patch(url, json_data, content_type='application/json')
+        self.pereval_2.refresh_from_db()
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(self.pereval_2.beauty_title, "beauty_title_222")
