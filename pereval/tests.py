@@ -92,4 +92,12 @@ class PerevalTest(APITestCase):
         self.assertEqual(response.data, serializer_data)
         self.assertEqual(2, len(serializer_data))
 
+    def test_get_detail(self):
+        url = reverse('pereval-detail', kwargs={'pk': self.pereval_1.pk})
+        response = self.client.get(url)
+        serializer_data = PerevalSerializer(self.pereval_1).data
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data, serializer_data)
+        self.assertEqual(response.data.get('beauty_title'), serializer_data.get('beauty_title'))
+
 
