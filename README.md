@@ -116,3 +116,8 @@ ______
 *Документация **redoc**: http://127.0.0.1:8000/redoc/*
 
 ______
+***Проект опубликован на хостинге pythonanywhere.com***
+
+*DRF **Api Root**: https://mfrkhcv9rktq.pythonanywhere.com/*<br/>
+*Документация **swagger**: https://mfrkhcv9rktq.pythonanywhere.com/swagger/*<br/>
+*Документация **redoc**: https://mfrkhcv9rktq.pythonanywhere.com/redoc/*
