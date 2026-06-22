@@ -73,6 +73,18 @@ class PerevalViewSet(ModelViewSet):
                 }
             )
 
+        user_data = pereval_data.get("user")
+        user_dict = model_to_dict(pereval_obj.user)
+        user_dict.pop('id')
+
+        if user_data and user_data != user_dict:
+            return Response(
+                {
+                    "state": 0,
+                    "message": "Нельзя менять данные пользователя"
+                }
+            )
+
         if serializer.is_valid():
             serializer.save()
         return Response(
