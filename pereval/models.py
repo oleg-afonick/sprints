@@ -24,7 +24,7 @@ from django.db import models
   "autumn": "1А",
   "spring": ""},
  
-   images: [{"data": "<картинка1>", "title": "Седловина"}, {"data" :"<картинка2>", "title" :"Подъём"}]
+   "images": [{"data": "<картинка1>", "title": "Седловина"}, {"data": "<картинка2>", "title": "Подъём"}]
 }
 '''
 
