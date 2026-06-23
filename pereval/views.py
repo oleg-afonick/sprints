@@ -70,7 +70,8 @@ class PerevalViewSet(ModelViewSet):
                 {
                     "state": 0,
                     "message": "Можно изменять запись только в статусе 'new'"
-                }
+                },
+                status=status.HTTP_403_FORBIDDEN
             )
 
         user_data = pereval_data.get("user")
@@ -82,7 +83,8 @@ class PerevalViewSet(ModelViewSet):
                 {
                     "state": 0,
                     "message": "Нельзя менять данные пользователя"
-                }
+                },
+                status=status.HTTP_403_FORBIDDEN
             )
 
         if serializer.is_valid():
@@ -91,7 +93,8 @@ class PerevalViewSet(ModelViewSet):
             {
                 "state": 1,
                 "message": "Запись успешно обновлена"
-            }
+            },
+            status=status.HTTP_200_OK
         )
 
     class ImageViewSet(ModelViewSet):
